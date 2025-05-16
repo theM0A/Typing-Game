@@ -23,4 +23,34 @@ const quoteElement = document.getElementById('quote');
 const typedValueElement = document.getElementById('typed-value');
 const messageElement = document.getElementById('message');
 
+document.getElementById('start').addEventListener('click', () => {
+    // get a quote
+    const quoteIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[quoteIndex];
 
+    // Put the quote into an array of words 
+    words = quote.split(' ');
+    // Reset the word index for tracking
+    wordIndex = 0;
+
+
+    // UI updates
+    // Create an array of span elements so we can set a class
+    const spanWords = words.map(function(word) { return `<span>${word} </span>`});
+    // Convert into string and set as innerHTML on quote display
+    quoteElemen.innerHTML = spanWords.join('');
+    // Highlight the first word
+    quotesElement.childNode[0].className = 'highlight';
+    // Clear any prior messages 
+    messageElement.innerText = '';
+
+
+    // Setup and Clear the textbox
+    typedValueElement.value = '';
+    // Set focus
+    typedValueElement.focus();
+    // Set the even handler
+
+    // Start the timer
+    startTime = new Date().getTimer();
+});
